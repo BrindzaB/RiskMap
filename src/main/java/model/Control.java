@@ -13,7 +13,8 @@ public class Control {
     private User owner;
     private List<AuditResult> auditResults;
 
-    public Control(String name, String description, int impact, int likelihood, User owner) {
+    public Control(int id, String name, String description, int impact, int likelihood, User owner) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.impact = impact;
