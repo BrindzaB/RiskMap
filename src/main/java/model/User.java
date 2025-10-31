@@ -16,4 +16,16 @@ public class User {
     public int getId() {
         return id;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

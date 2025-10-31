@@ -1,4 +1,4 @@
-package model.dao;
+package model.dao.control;
 
 import model.Control;
 import model.User;
@@ -6,7 +6,6 @@ import model.User;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class ControlDaoJDBC implements ControlDao {
 
@@ -91,20 +90,20 @@ public class ControlDaoJDBC implements ControlDao {
     public List<Control> findAll() {
         String sql = "SELECT controls.*, users.username, users.password FROM controls INNER JOIN users ON controls.owner = users.id ORDER BY controls.id";
 
-        List<Control> controlList = new ArrayList<>();
+        List<Control> controls = new ArrayList<>();
 
         try (PreparedStatement st = conn.prepareStatement(sql)) {
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
                 Control control = instantiateControl(rs);
-                controlList.add(control);
+                controls.add(control);
             }
         } catch (SQLException e) {
             throw new RuntimeException("Error finding all controls", e);
         }
 
-        return controlList;
+        return controls;
     }
 
     private Control instantiateControl(ResultSet rs) throws SQLException {
