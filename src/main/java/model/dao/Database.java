@@ -29,7 +29,7 @@ public class Database {
                 connection.close();
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new SQLException("Error closing database connection", e);
         }
     }
 }
