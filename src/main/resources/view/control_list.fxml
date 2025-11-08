@@ -1,0 +1,15 @@
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.ControlListController">
+    <center>
+        <TableView fx:id="controlTable">
+            <columns>
+                <TableColumn fx:id="nameColumn" text="Name" />
+                <TableColumn fx:id="descriptionColumn" text="Description" />
+                <TableColumn fx:id="impactColumn" text="Impact" />
+                <TableColumn fx:id="likelihoodColumn" text="Likelihood" />
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>
