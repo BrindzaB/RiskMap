@@ -1,7 +1,19 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.ControlListController">
+    <top>
+        <ToolBar>
+            <Label text="Min likelihood:"/>
+            <TextField fx:id="likelihoodField" promptText="e.g. 3"/>
+            <Button text="Apply" onAction="#onFilterByLikelihood"/>
+            <Button text="Clear" onAction="#onClearFilter"/>
+        </ToolBar>
+    </top>
     <center>
         <TableView fx:id="controlTable">
             <columns>

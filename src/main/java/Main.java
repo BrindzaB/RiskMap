@@ -3,6 +3,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import manager.SceneManager;
 import model.dao.Database;
 import model.dao.auditResult.AuditResultDao;
 import model.dao.auditResult.AuditResultDaoJDBC;
@@ -22,19 +23,26 @@ public class Main extends Application {
 
             ControlDao controlDao = new ControlDaoJDBC(connection);
             AuditResultDao auditResultDao = new AuditResultDaoJDBC(connection);
-
             ControlService controlService = new ControlService(controlDao, auditResultDao);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/control_list.fxml"));
-            Scene scene = new Scene(loader.load());
+            SceneManager sceneManager = SceneManager.getInstance();
+            sceneManager.setStage(primaryStage);
 
-            ControlListController controlListController = loader.getController();
-            controlListController.setControlService(controlService);
-            controlListController.loadControls();
+            sceneManager.addScene("dashboard", "/view/dashboard.fxml");
 
-            primaryStage.setTitle("Control List");
-            primaryStage.setScene(scene);
-            primaryStage.show();
+            sceneManager.addSceneWithSetup("controlList", "/view/control_list.fxml",
+                    controller -> {
+                            ControlListController ctrl = (ControlListController) controller;
+                            ctrl.setControlService(controlService);
+                            ctrl.loadControls();
+                    });
+
+            primaryStage.setTitle("Control Management System");
+            primaryStage.setWidth(900);
+            primaryStage.setHeight(700);
+
+            sceneManager.switchScene("dashboard");
+
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
