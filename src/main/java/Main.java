@@ -1,3 +1,4 @@
+import controller.AddControlController;
 import controller.ControlListController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -35,6 +36,12 @@ public class Main extends Application {
                             ControlListController ctrl = (ControlListController) controller;
                             ctrl.setControlService(controlService);
                             ctrl.loadControls();
+                    });
+
+            sceneManager.addSceneWithSetup("addControl", "/view/add_control.fxml",
+                    controller -> {
+                            AddControlController ctrl = (AddControlController) controller;
+                            ctrl.setControlService(controlService);
                     });
 
             primaryStage.setTitle("Control Management System");

@@ -8,6 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import manager.SceneManager;
 import model.Control;
 import service.ControlService;
 
@@ -66,6 +67,11 @@ public class ControlListController {
     private void onClearFilter() {
         likelihoodField.clear();
         loadControls();
+    }
+
+    @FXML
+    private void onDashboard() {
+        SceneManager.getInstance().switchScene("dashboard");
     }
 
     private void showAlert(String message) {
