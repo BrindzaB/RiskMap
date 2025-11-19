@@ -1,9 +1,12 @@
 package model.dao.control;
 
+import model.AuditResult;
 import model.Control;
+import model.Result;
 import model.User;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,6 +100,7 @@ public class ControlDaoJDBC implements ControlDao {
 
             while (rs.next()) {
                 Control control = instantiateControl(rs);
+                loadAuditResults(control);
                 controls.add(control);
             }
         } catch (SQLException e) {
@@ -104,6 +108,24 @@ public class ControlDaoJDBC implements ControlDao {
         }
 
         return controls;
+    }
+
+    private void loadAuditResults(Control control) {
+        String sql = "SELECT * FROM audit_results WHERE control_id = ? ORDER BY date DESC";
+        try (PreparedStatement st = conn.prepareStatement(sql)) {
+            st.setInt(1, control.getId());
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                LocalDate date = rs.getDate("date").toLocalDate();
+                Result result = Result.valueOf(rs.getString("result"));
+                AuditResult auditResult = new AuditResult(id, control.getId(), date, result);
+                control.getAuditResults().add(auditResult);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error while loading audit results " + e.getMessage());
+        }
     }
 
     private Control instantiateControl(ResultSet rs) throws SQLException {

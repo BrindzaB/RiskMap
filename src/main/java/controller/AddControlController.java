@@ -25,9 +25,6 @@ public class AddControlController {
 
     @FXML
     private void initialize() {
-        System.out.println("AddControlController.initialize() called");
-        System.out.println("ownerComboBox is null: " + (ownerComboBox == null));
-
         impactSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 5, 1));
         likelihoodSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 5, 1));
 
@@ -55,21 +52,11 @@ public class AddControlController {
     }
 
     public void loadUsers() {
-        System.out.println("loadUsers() called");
         try {
             List<User> users = userService.getAllUsers();
-            System.out.println("Number of users loaded: " + users.size());
-
-            for (User user : users) {
-                System.out.println("User: " + user.getId() + ", " + user.getUsername());
-            }
-
             ObservableList<User> userList = FXCollections.observableArrayList(users);
             ownerComboBox.setItems(userList);
-
-            System.out.println("ComboBox items set. Total items: " + ownerComboBox.getItems().size());
         } catch (Exception e) {
-            System.err.println("Error loading users: " + e.getMessage());
             e.printStackTrace();
             showAlert("Error loading users: " + e.getMessage());
         }

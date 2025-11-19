@@ -35,6 +35,10 @@ public class Control {
         this.id = id;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -53,6 +57,10 @@ public class Control {
 
     public User getOwner() {
         return owner;
+    }
+
+    public List<AuditResult> getAuditResults() {
+        return auditResults;
     }
 
 }

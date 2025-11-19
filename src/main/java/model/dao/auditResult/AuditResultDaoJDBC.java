@@ -18,8 +18,8 @@ public class AuditResultDaoJDBC implements AuditResultDao {
 
     @Override
     public void insert(AuditResult auditResult) {
-        String sql = "INSERT INTO audit_results (controlId, date, result) VALUES (?, ?, ?)";
-        try (PreparedStatement st = conn.prepareStatement(sql)) {
+        String sql = "INSERT INTO audit_results (control_id, date, result) VALUES (?, ?, ?)";
+        try (PreparedStatement st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             st.setInt(1, auditResult.getControlId());
             st.setDate(2, Date.valueOf(auditResult.getDate()));
             st.setString(3, auditResult.getResult().name());
@@ -34,12 +34,11 @@ public class AuditResultDaoJDBC implements AuditResultDao {
         } catch (SQLException e) {
             throw new RuntimeException("Error inserting new audit result", e);
         }
-
     }
 
     @Override
     public List<AuditResult> findByControlId(int controlId) {
-        String sql = "SELECT * FROM audit_results WHERE controlId = ? ORDER BY date DESC";
+        String sql = "SELECT * FROM audit_results WHERE control_id = ? ORDER BY date DESC";
         List<AuditResult> auditResults = new ArrayList<>();
 
         try (PreparedStatement st = conn.prepareStatement(sql)) {
@@ -47,7 +46,7 @@ public class AuditResultDaoJDBC implements AuditResultDao {
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
-                AuditResult auditResult = instatiateAuditResult(rs);
+                AuditResult auditResult = instantiateAuditResult(rs);
                 auditResults.add(auditResult);
             }
         } catch (SQLException e) {
@@ -69,13 +68,12 @@ public class AuditResultDaoJDBC implements AuditResultDao {
         }
     }
 
-    private AuditResult instatiateAuditResult(ResultSet rs) throws SQLException {
+    private AuditResult instantiateAuditResult(ResultSet rs) throws SQLException {
         int id = rs.getInt("id");
-        int controlId = rs.getInt("controlId");
+        int controlId = rs.getInt("control_id");
         LocalDate date = rs.getDate("date").toLocalDate();
         Result result = Result.valueOf(rs.getString("result"));
 
         return new AuditResult(id, controlId, date, result);
     }
-
 }
