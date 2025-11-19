@@ -24,20 +24,8 @@ public class ControlService {
         return controlDao.findAll();
     }
 
-    public Control getControlById(int id) {
-        return controlDao.findById(id);
-    }
-
     public void addControl(Control control) {
         controlDao.insert(control);
-    }
-
-    public void updateControl(Control control) {
-        controlDao.update(control);
-    }
-
-    public void deleteControl(int id) {
-        controlDao.deleteByID(id);
     }
 
 

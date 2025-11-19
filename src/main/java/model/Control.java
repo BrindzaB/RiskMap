@@ -23,6 +23,14 @@ public class Control {
         this.auditResults = new ArrayList<>();
     }
 
+    public Control(String name, String description, int impact, int likelihood, User owner) {
+        this.name = name;
+        this.description = description;
+        this.impact = impact;
+        this.likelihood = likelihood;
+        this.owner = owner;
+    }
+
     public void setId(int id) {
         this.id = id;
     }

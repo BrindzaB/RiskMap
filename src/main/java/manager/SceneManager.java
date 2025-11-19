@@ -12,6 +12,7 @@ public class SceneManager {
     private static SceneManager instance;
     private Stage stage;
     private Map<String, Scene> scenes = new HashMap<>();
+    private Map<String, Object> controllers = new HashMap<>();
 
     public static SceneManager getInstance() {
         if (instance == null) {
@@ -28,6 +29,7 @@ public class SceneManager {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
         Scene scene = new Scene(loader.load());
         scenes.put(name, scene);
+        controllers.put(name, loader.getController());
     }
 
     public void addSceneWithSetup(String name, String fxmlPath, SetupController setup) throws IOException {
@@ -37,20 +39,36 @@ public class SceneManager {
         Object controller = loader.getController();
         setup.setup(controller);
         scenes.put(name, scene);
+        controllers.put(name, controller);
     }
 
     public void switchScene(String sceneName) {
         if (scenes.containsKey(sceneName)) {
             stage.setScene(scenes.get(sceneName));
             stage.show();
+
+            refreshScene(sceneName);
         } else {
             System.out.println("Scene `" + sceneName + "' not found");
+        }
+    }
+
+    private void refreshScene(String sceneName) {
+        Object controller = controllers.get(sceneName);
+
+        if (controller instanceof Refreshable) {
+            ((Refreshable) controller).refresh();
         }
     }
 
     @FunctionalInterface
     public interface SetupController {
         void setup(Object controller);
+    }
+
+    @FunctionalInterface
+    public interface Refreshable {
+        void refresh();
     }
 
 }

@@ -14,7 +14,7 @@ import service.ControlService;
 
 import java.util.List;
 
-public class ControlListController {
+public class ControlListController implements SceneManager.Refreshable {
 
     @FXML private TableView<Control> controlTable;
     @FXML private TableColumn<Control, String> nameColumn;
@@ -82,4 +82,8 @@ public class ControlListController {
         alert.showAndWait();
     }
 
+    @Override
+    public void refresh() {
+        loadControls();
+    }
 }

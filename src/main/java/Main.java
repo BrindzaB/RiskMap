@@ -5,12 +5,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import manager.SceneManager;
+import model.User;
 import model.dao.Database;
 import model.dao.auditResult.AuditResultDao;
 import model.dao.auditResult.AuditResultDaoJDBC;
 import model.dao.control.ControlDao;
 import model.dao.control.ControlDaoJDBC;
+import model.dao.user.UserDao;
+import model.dao.user.UserDaoJDBC;
 import service.ControlService;
+import service.UserService;
 
 import java.sql.Connection;
 
@@ -24,7 +28,9 @@ public class Main extends Application {
 
             ControlDao controlDao = new ControlDaoJDBC(connection);
             AuditResultDao auditResultDao = new AuditResultDaoJDBC(connection);
+            UserDao userDao = new UserDaoJDBC(connection);
             ControlService controlService = new ControlService(controlDao, auditResultDao);
+            UserService userService = new UserService(userDao);
 
             SceneManager sceneManager = SceneManager.getInstance();
             sceneManager.setStage(primaryStage);
@@ -42,6 +48,8 @@ public class Main extends Application {
                     controller -> {
                             AddControlController ctrl = (AddControlController) controller;
                             ctrl.setControlService(controlService);
+                            ctrl.setUserService(userService);
+                            ctrl.loadUsers();
                     });
 
             primaryStage.setTitle("Control Management System");
