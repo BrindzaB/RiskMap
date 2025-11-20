@@ -51,7 +51,7 @@
                 <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 5;">
                     <Label text="Audit Results" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
                     <HBox HBox.hgrow="ALWAYS"/>
-                    <Button text="Add New Result" />
+                    <Button text="Add New Result" onAction="#onAddResult"/>
                 </HBox>
 
                 <TableView fx:id="auditResultTable">

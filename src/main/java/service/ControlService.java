@@ -1,5 +1,6 @@
 package service;
 
+import model.AuditResult;
 import model.Control;
 import model.dao.auditResult.AuditResultDao;
 import model.dao.control.ControlDao;
@@ -28,5 +29,12 @@ public class ControlService {
         controlDao.insert(control);
     }
 
+    public void addAuditResult(AuditResult auditResult) {
+        auditResultDao.insert(auditResult);
+    }
+
+    public List<AuditResult> getAuditResultsForControl(int controlId) {
+        return auditResultDao.findByControlId(controlId);
+    }
 
 }

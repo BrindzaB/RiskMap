@@ -16,6 +16,12 @@ public class AuditResult {
         this.result = result;
     }
 
+    public AuditResult(int controlId, LocalDate date, Result result) {
+        this.controlId = controlId;
+        this.date = date;
+        this.result = result;
+    }
+
     public int getId() {
         return id;
     }

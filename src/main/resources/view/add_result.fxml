@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Button?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.AddAuditResultController">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10; -fx-background-color: #f0f0f0;">
+            <Label text="Add New Audit Result" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+            <HBox HBox.hgrow="ALWAYS"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox spacing="15" style="-fx-padding: 20;">
+            <VBox spacing="10" style="-fx-border-color: #cccccc; -fx-border-width: 1; -fx-padding: 10;">
+                <Label text="Control Information" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+                <HBox spacing="20">
+                    <VBox spacing="5">
+                        <Label text="Control Name:" style="-fx-font-weight: bold;"/>
+                        <Label fx:id="controlNameLabel" text=""/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <VBox spacing="15" style="-fx-border-color: #cccccc; -fx-border-width: 1; -fx-padding: 10;">
+                <Label text="Audit Result Details" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+
+                <VBox spacing="5">
+                    <Label text="Date:" style="-fx-font-weight: bold;"/>
+                    <DatePicker fx:id="datePicker" />
+                </VBox>
+
+                <VBox spacing="5">
+                    <Label text="Result:" style="-fx-font-weight: bold;"/>
+                    <ComboBox fx:id="resultComboBox" promptText="Select a result"/>
+                </VBox>
+            </VBox>
+
+            <HBox spacing="10">
+                <Button text="Save" onAction="#onSave" style="-fx-padding: 8 30;"/>
+                <Button text="Cancel" onAction="#onBack" style="-fx-padding: 8 30;"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

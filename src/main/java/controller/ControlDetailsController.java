@@ -13,6 +13,8 @@ import model.AuditResult;
 import model.Control;
 import service.ControlService;
 
+import java.util.List;
+
 public class ControlDetailsController implements SceneManager.Refreshable {
     @FXML private Label nameLabel;
     @FXML private Label descriptionLabel;
@@ -52,7 +54,13 @@ public class ControlDetailsController implements SceneManager.Refreshable {
         likelihoodLabel.setText(String.valueOf(control.getLikelihood()));
         ownerLabel.setText(control.getOwner().getUsername());
 
-        auditData.setAll(control.getAuditResults());
+        List<AuditResult> auditResults = controlService.getAuditResultsForControl(control.getId());
+        auditData.setAll(auditResults);
+    }
+
+    @FXML
+    private void onAddResult() {
+        SceneManager.getInstance().switchScene("addResult", currentControl);
     }
 
     @FXML

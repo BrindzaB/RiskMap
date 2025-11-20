@@ -1,3 +1,4 @@
+import controller.AddAuditResultController;
 import controller.AddControlController;
 import controller.ControlDetailsController;
 import controller.ControlListController;
@@ -57,6 +58,12 @@ public class Main extends Application {
                             ctrl.setControlService(controlService);
                             ctrl.setUserService(userService);
                             ctrl.loadUsers();
+                    });
+
+            sceneManager.addSceneWithSetup("addResult", "/view/add_result.fxml",
+                    controller -> {
+                            AddAuditResultController ctrl = (AddAuditResultController) controller;
+                            ctrl.setControlService(controlService);
                     });
 
             primaryStage.setTitle("Control Management System");
