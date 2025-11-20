@@ -100,7 +100,7 @@ public class AddControlController {
 
     @FXML
     public void onBack() {
-        SceneManager.getInstance().switchScene("controlList");
+        SceneManager.getInstance().switchScene("dashboard");
     }
 
     public void setControlService(ControlService controlService) {

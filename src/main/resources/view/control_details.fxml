@@ -15,7 +15,6 @@
     </top>
     <center>
         <VBox spacing="15" style="-fx-padding: 15;">
-            <!-- Control Details Section -->
             <VBox spacing="10" style="-fx-border-color: #cccccc; -fx-border-width: 1; -fx-padding: 10;">
                 <Label text="Control Details" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
 
@@ -47,9 +46,14 @@
                 </HBox>
             </VBox>
 
-            <!-- Audit Results Section -->
+
             <VBox spacing="10" style="-fx-border-color: #cccccc; -fx-border-width: 1; -fx-padding: 10;">
-                <Label text="Audit Results" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+                <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 5;">
+                    <Label text="Audit Results" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+                    <HBox HBox.hgrow="ALWAYS"/>
+                    <Button text="Add New Result" />
+                </HBox>
+
                 <TableView fx:id="auditResultTable">
                     <columns>
                         <TableColumn fx:id="auditIdColumn" text="ID" />

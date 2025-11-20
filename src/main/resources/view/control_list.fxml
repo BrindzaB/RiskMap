@@ -23,7 +23,7 @@
                 <TableColumn fx:id="descriptionColumn" text="Description" />
                 <TableColumn fx:id="impactColumn" text="Impact" />
                 <TableColumn fx:id="likelihoodColumn" text="Likelihood" />
-                <TableColumn fx:id="actionColumn" text="Actions" />
+                <TableColumn fx:id="actionColumn" text="" />
             </columns>
         </TableView>
     </center>
