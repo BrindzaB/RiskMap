@@ -13,6 +13,7 @@ public class SceneManager {
     private Stage stage;
     private Map<String, Scene> scenes = new HashMap<>();
     private Map<String, Object> controllers = new HashMap<>();
+    private Object currentData;
 
     public static SceneManager getInstance() {
         if (instance == null) {
@@ -43,7 +44,12 @@ public class SceneManager {
     }
 
     public void switchScene(String sceneName) {
+        switchScene(sceneName, null);
+    }
+
+    public void switchScene(String sceneName, Object data) {
         if (scenes.containsKey(sceneName)) {
+            this.currentData = data;
             stage.setScene(scenes.get(sceneName));
             stage.show();
 
@@ -51,6 +57,14 @@ public class SceneManager {
         } else {
             System.out.println("Scene `" + sceneName + "' not found");
         }
+    }
+
+    public Object getCurrentData() {
+        return currentData;
+    }
+
+    public void clearCurrentData() {
+        currentData = null;
     }
 
     private void refreshScene(String sceneName) {

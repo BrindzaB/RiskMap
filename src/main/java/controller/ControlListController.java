@@ -3,10 +3,7 @@ package controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import manager.SceneManager;
 import model.Control;
@@ -21,6 +18,7 @@ public class ControlListController implements SceneManager.Refreshable {
     @FXML private TableColumn<Control, String> descriptionColumn;
     @FXML private TableColumn<Control, Integer> impactColumn;
     @FXML private TableColumn<Control, Integer> likelihoodColumn;
+    @FXML private TableColumn<Control, Void> actionColumn;
     @FXML private TextField likelihoodField;
 
     private ControlService controlService;
@@ -35,6 +33,32 @@ public class ControlListController implements SceneManager.Refreshable {
 
         controlData = FXCollections.observableArrayList();
         controlTable.setItems(controlData);
+
+        addDetailsButtonColumn();
+    }
+
+    private void addDetailsButtonColumn() {
+        actionColumn.setCellFactory(col -> new TableCell<Control, Void>() {
+            private final Button btn = new Button("Details");
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    btn.setOnAction(event -> {
+                        Control control = getTableView().getItems().get(getIndex());
+                        openControlDetails(control);
+                    });
+                    setGraphic(btn);
+                }
+            }
+        });
+    }
+
+    private void openControlDetails(Control control) {
+        SceneManager.getInstance().switchScene("controlDetails", control);
     }
 
     public void setControlService(ControlService controlService) {
