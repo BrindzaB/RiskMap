@@ -32,7 +32,6 @@ public class AddControlController {
     }
 
     private void configureUserComboBox() {
-        // Cell factory for the dropdown list
         ownerComboBox.setCellFactory(lv -> new ListCell<User>() {
             @Override
             protected void updateItem(User user, boolean empty) {
@@ -41,7 +40,6 @@ public class AddControlController {
             }
         });
 
-        // Button cell for when ComboBox is closed
         ownerComboBox.setButtonCell(new ListCell<User>() {
             @Override
             protected void updateItem(User user, boolean empty) {
