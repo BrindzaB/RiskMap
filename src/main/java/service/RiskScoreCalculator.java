@@ -39,7 +39,6 @@ public class RiskScoreCalculator {
         int totalAudits = control.getAuditResults().size();
         double passRate = (double) passedAudits / totalAudits;
 
-        // Formula: 0.10 when 0% pass, 0.50 when 50% pass, 0.85 when 100% pass
         return 0.10 + (passRate * 0.75);
     }
 
