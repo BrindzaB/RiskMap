@@ -29,6 +29,7 @@ public class Control {
         this.impact = impact;
         this.likelihood = likelihood;
         this.owner = owner;
+        this.auditResults = new ArrayList<>();
     }
 
     public void setId(int id) {
