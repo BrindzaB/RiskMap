@@ -41,8 +41,4 @@ public class RiskScoreCalculator {
 
         return 0.10 + (passRate * 0.75);
     }
-
-    public double getControlEffectiveness(Control control) {
-        return calculateControlEffectiveness(control) * 100;
-    }
 }

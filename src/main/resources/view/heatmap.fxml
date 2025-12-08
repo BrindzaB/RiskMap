@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.HeatmapController"
+            prefWidth="1200"
+            prefHeight="900">
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10; -fx-background-color: #f0f0f0;">
+            <Label text="Risk Heatmap" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+            <HBox HBox.hgrow="ALWAYS"/>
+            <Button text="Back to Dashboard" onAction="#onDashboard"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox fx:id="heatmapContainer" style="-fx-padding: 20;"/>
+    </center>
+</BorderPane>

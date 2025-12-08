@@ -23,6 +23,10 @@
                         prefWidth="150"
                         prefHeight="50"
                         onAction="#onAddNewControl"/>
+                <Button text="Show Heatmap"
+                        prefWidth="150"
+                        prefHeight="50"
+                        onAction="#onShowHeatmap"/>
             </HBox>
         </VBox>
     </center>

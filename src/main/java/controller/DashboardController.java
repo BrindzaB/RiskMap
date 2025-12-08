@@ -14,4 +14,9 @@ public class DashboardController {
     private void onAddNewControl() {
         SceneManager.getInstance().switchScene("addControl");
     }
+
+    @FXML
+    private void onShowHeatmap() {
+        SceneManager.getInstance().switchScene("heatmap");
+    }
 }

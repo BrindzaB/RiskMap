@@ -1,7 +1,4 @@
-import controller.AddAuditResultController;
-import controller.AddControlController;
-import controller.ControlDetailsController;
-import controller.ControlListController;
+import controller.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,6 +13,7 @@ import model.dao.control.ControlDaoJDBC;
 import model.dao.user.UserDao;
 import model.dao.user.UserDaoJDBC;
 import service.ControlService;
+import service.RiskScoreCalculator;
 import service.UserService;
 
 import java.sql.Connection;
@@ -64,6 +62,13 @@ public class Main extends Application {
                     controller -> {
                             AddAuditResultController ctrl = (AddAuditResultController) controller;
                             ctrl.setControlService(controlService);
+                    });
+
+            sceneManager.addSceneWithSetup("heatmap", "/view/heatmap.fxml",
+                    controller -> {
+                                HeatmapController ctrl = (HeatmapController) controller;
+                                ctrl.setControlService(controlService);
+                                ctrl.loadHeatmap();
                     });
 
             primaryStage.setTitle("Control Management System");

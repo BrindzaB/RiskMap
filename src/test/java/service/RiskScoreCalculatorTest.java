@@ -25,10 +25,10 @@ class RiskScoreCalculatorTest {
 
     @Test
     public void testRiskScore_MinimumValues_NoAudits() {
-        control = new Control("Test control", "Test description", 0, 0, mockUser);
+        control = new Control("Test control", "Test description", 1, 1, mockUser);
         double riskScore = calculator.calculateRiskScore(control);
 
-        assertEquals(0.0, riskScore, 0.01);
+        assertEquals(2.0, riskScore, 0.01);
     }
 
     @Test
