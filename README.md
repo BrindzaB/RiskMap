@@ -30,10 +30,10 @@ RiskMap uses a sophisticated risk calculation model:
 ```
 Inherent Risk = Impact × Likelihood (0-25)
 Control Effectiveness = Based on audit history (0-1.0)
-  • All passing audits: 85% effective
-  • Mixed results: Proportional to pass rate
-  • All failing: 10% effective
-  • No audits: 50% effective (unknown)
+  - All passing audits: 85% effective
+  - Mixed results: Proportional to pass rate
+  - All failing: 10% effective
+  - No audits: 50% effective (unknown)
 Residual Risk = Inherent Risk × (1 - Control Effectiveness)
 Final Score = (Residual Risk / 25) × 100 (0-100)
 ```
@@ -113,35 +113,6 @@ _Detailed control information with audit history_
 ![List of Controls](screenshots/List%20of%20controls.png)
 _Manage and track all controls with real-time risk scores_
 
-## Project Structure
-
-```
-RiskMap/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   ├── Main.java                 # Application entry point
-│   │   │   ├── component/                # Custom JavaFX components
-│   │   │   ├── controller/               # MVVM controllers
-│   │   │   ├── manager/                  # Scene and resource management
-│   │   │   ├── model/                    # Data models
-│   │   │   │   ├── Control.java
-│   │   │   │   ├── AuditResult.java
-│   │   │   │   ├── User.java
-│   │   │   │   └── dao/                  # Data Access Objects
-│   │   │   └── service/                  # Business logic
-│   │   │       ├── ControlService.java
-│   │   │       ├── UserService.java
-│   │   │       └── RiskScoreCalculator.java
-│   │   └── resources/
-│   │       └── view/                     # FXML UI files
-│   └── test/
-│       └── java/                         # Unit tests
-├── database.sql                          # Database schema
-├── pom.xml                               # Maven configuration
-└── README.md                             # This file
-```
-
 ## Technology Stack
 
 | Component             | Technology  | Version |
@@ -210,9 +181,9 @@ See `database.sql` for the complete schema.
     ```
 
 2. **Make your changes**
-    - Follow the existing code structure
-    - Write unit tests for new features
-    - Ensure your code compiles without warnings
+- Follow the existing code structure
+- Write unit tests for new features
+- Ensure your code compiles without warnings
 
 3. **Test your changes**
 
@@ -224,14 +195,14 @@ See `database.sql` for the complete schema.
 
 ## Roadmap
 
-- [ ] Role-based access control (RBAC)
-- [ ] Advanced filtering and reporting
-- [ ] Data export (PDF, Excel)
-- [ ] Real-time notifications
-- [ ] Audit trail logging
-- [ ] Integration with external systems
-- [ ] REST API
-- [ ] Web-based interface
+- Role-based access control (RBAC)
+- Advanced filtering and reporting
+- Data export (PDF, Excel)
+- Real-time notifications
+- Audit trail logging
+- Integration with external systems
+- REST API
+- Web-based interface
 
 ## Known Issues & Limitations
 
@@ -239,51 +210,8 @@ See `database.sql` for the complete schema.
 - Testing framework setup in progress
 - Additional validation rules being implemented
 
-See [Issues](https://github.com/yourusername/RiskMap/issues) for current open items.
-
-## Contributing
-
-Contributions are welcome! Here's how to get started:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-Please ensure your contributions include:
-
-- Clear commit messages
-- Unit tests for new functionality
-- Updated documentation
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Author
 
 **Brindza Botond**
 
-- GitHub: [@botibrindza](https://github.com/botibrindza)
-
-## Acknowledgments
-
-- JavaFX team for the excellent UI framework
-- MySQL for reliable database management
-- The open-source community for invaluable libraries and tools
-
-## Support
-
-For questions, issues, or suggestions:
-
-- Open an issue on [GitHub Issues](https://github.com/yourusername/RiskMap/issues)
-- Reach out via email
-
----
-
-<div align="center">
-
-**Built for better risk management**
-
-</div>
+- GitHub: https://github.com/BrindzaB
