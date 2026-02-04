@@ -9,7 +9,7 @@
 
 ## Overview
 
-RiskMap is a comprehensive risk management system designed to help organizations assess, track, and monitor risks and their controls. With intelligent risk scoring algorithms and an intuitive heatmap visualization, RiskMap enables teams to make data-driven decisions about their risk landscape.
+RiskMap is a comprehensive risk management system designed to help organizations assess, track, and monitor risks and their controls.
 
 ## Key Features
 
