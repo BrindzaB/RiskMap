@@ -127,7 +127,7 @@ public class RiskHeatmapPane extends GridPane {
             (impact == 5 && likelihood == 3) ||
             (impact == 4 && likelihood == 4)
         ) {
-            return Color.web("#F44336");  // Red
+            return Color.web("#F44336");
         }
 
         else if (
@@ -145,11 +145,11 @@ public class RiskHeatmapPane extends GridPane {
             (impact == 3 && likelihood == 2) ||
             (impact == 2 && likelihood == 3)
         ) {
-            return Color.web("#FFC107");  // Yellow
+            return Color.web("#FFC107");
         }
 
         else {
-            return Color.web("#4CAF50");  // Green
+            return Color.web("#4CAF50");
         }
     }
 
