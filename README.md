@@ -191,19 +191,6 @@ See `database.sql` for the complete schema.
     mvn clean test
     ```
 
-4. **Submit a pull request**
-
-## Roadmap
-
-- Role-based access control (RBAC)
-- Advanced filtering and reporting
-- Data export (PDF, Excel)
-- Real-time notifications
-- Audit trail logging
-- Integration with external systems
-- REST API
-- Web-based interface
-
 ## Known Issues & Limitations
 
 - **Status**: Project is in active development
